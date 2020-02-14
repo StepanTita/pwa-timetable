@@ -30,7 +30,6 @@
     width: 100%;
     z-index: 0;
     float: right;
-    overflow: hidden;
 }
 
 
@@ -38,6 +37,7 @@
 
 .time-table {
     height: 100%;
+    overflow: hidden;
 }
 
 .dtd {
@@ -45,18 +45,18 @@
 }
 
 .time-dtd {
-    width: 4% !important;
+    width: 3% !important;
     border-left: none;
 }
 
 .time-table .dtr {
     width: 100%;
-    overflow-x: scroll;
     white-space: nowrap;
 }
 
 .time-table .dtd {
-    width: 13%;
+    vertical-align:top;
+    width: 11.4%;
     display: inline-block;
     height: 100%;
     border-right: none;
@@ -65,10 +65,22 @@
 
 .time-col {
     height: 100%;
-    width: 15%;
+    width: 13%;
     display: inline-block;
+    text-align: right;
 }
 
+.time-col span {
+    position: relative;
+    top: -10px;
+    margin-right: 3px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+}
 
 /* MENU */
 
@@ -86,7 +98,7 @@
 .menu-img {
     align-self: start;
     top: 27%;
-    padding-left: 30px;
+    padding-left: 15px;
     padding-right: 0;
 }
 
