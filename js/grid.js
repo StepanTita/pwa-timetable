@@ -2,11 +2,11 @@ function createGrid() {
     let countRows = config.hoursF - config.hoursS;
 
     
-    let row = '<div class="time-dtd dtd"></div>'; //<div class="time-col">08:00</div>
-    for (let j = 0; j < config.days + 1; ++j) {
-        row += '<div class="dtd"></div>';
+    let row = '<div class="time-dtd dtd"></div>';
+    for (let j = 0; j < config.days; ++j) {
+        row += '<div class="dtd interactable"></div>';
     }
-    row += '</div>'
+    row += '<div class="dtd"></div></div>'
 
     let height = 100 / countRows;
 
