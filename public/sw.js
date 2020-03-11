@@ -1,21 +1,30 @@
-let V = "1";
+let V = "3";
 const staticCacheName = `site-static-v${V}`;
 const dynamicCacheName = `site-dynamic-v${V}`;
 const assets = [
     '/',
-    '/index.html',
+    // '/index.html',
+    'calendar.html',
+
     '/js/app.js',
     '/js/calendar/main.js',
     '/js/calendar/scrollSide.js',
     '/js/calendar/interaction.js',
+    '/js/calendar/timemark.js',
+    '/js/stringJustify.js',
+
     '/img/icons/icon-64.png',
     '/img/icons/icon-512.png',
+
     '/js/jquery/jquery.ui.touch-punch.min.js',
     '/js/bootstrap-js/bootstrap.min.js',
+
     '/css/bootstrap-css/bootstrap.min.css',
     '/css/calendar/main.css',
+    
     'https://code.jquery.com/jquery-3.1.0.min.js',
-    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'
+    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js',
+    'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
 ];
 
 const limitCacheSize = (name, size) => {
