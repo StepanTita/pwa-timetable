@@ -1,0 +1,409 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UVa TimeTable</title>
+
+  <!-- materialize icons, css & js -->
+  <link rel="icon" href="img/icons/icon-64.png">
+  <link rel="stylesheet" href="css/bootstrap-css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/calendar/main.css" />
+  <link rel="manifest" href="manifest.json">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- ios support -->
+  <link rel="apple-touch-icon" href="img/icons/icon-512.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#FFBBEC">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#FFBBEC">
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">UVa TimeTable</a>
+
+    <a class="nav-link" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+  </nav> -->
+
+  <svg style="position: absolute; width: 0; height: 0; display: none;">
+    <symbol id="icon-arrow" viewBox="0 0 96 96">
+      <title>Arrow</title>
+      <path
+        d="M39.66,13.34A8,8,0,0,0,28.34,24.66L51.69,48,28.34,71.34A8,8,0,0,0,39.66,82.66l29-29a8,8,0,0,0,0-11.31Z" />
+    </symbol>
+  </svg>
+  <div class="modal-back hidden-modal">
+    <div class="my-modal">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+            <form id="adding-form" class="form" action="">
+              <div class="form-group">
+                <label class="form-label" for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" tabindex="1"
+                  required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="name">Teacher Name</label>
+                <input type="text" class="form-control" id="teacher" name="teacher" placeholder="Teacher name"
+                  tabindex="2" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="message">Comment</label>
+                <textarea rows="5" cols="50" name="message" class="form-control" id="comment" placeholder="Comment..."
+                  tabindex="3"></textarea>
+              </div>
+              <input type="hidden" value="" name="entry_id" id="entry_id">
+              <div class="text-center">
+                <button type="submit" class="btn btn-start-order" id="save-btn">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="table">
+      <div class="headers">
+        <div class="buttons">
+          <button class="btn-left">
+            <svg>
+              <use xlink:href="#icon-arrow"></use>
+            </svg>
+          </button>
+          <button class="btn-right">
+            <svg>
+              <use xlink:href="#icon-arrow"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="scroller syncscroll" name="myElements">
+          <div class="track time">
+            <div class="heading"><a class="nav-link" id="logout" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></div>
+          </div>
+          <div class="track">
+            <div class="heading today">Monday</div>
+          </div>
+          <div class="track">
+            <div class="heading">Tuesday</div>
+          </div>
+          <div class="track">
+            <div class="heading">Wednesday</div>
+          </div>
+          <div class="track">
+            <div class="heading">Thursday</div>
+          </div>
+          <div class="track">
+            <div class="heading">Friday</div>
+          </div>
+          <div class="track">
+            <div class="heading">Saturday</div>
+          </div>
+          <div class="track">
+            <div class="heading">Sunday</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tracks syncscroll" name="myElements">
+        <div class="track time">
+          <div class="track-cover current-moment">
+            <span class="current-time">08:00</span>
+          </div>
+          <div class="entry">
+            <time>08:00</time>
+          </div>
+          <div class="entry">
+            <time>09:00</time>
+          </div>
+          <div class="entry">
+            <time>10:00</time>
+          </div>
+          <div class="entry">
+            <time>11:00</time>
+          </div>
+          <div class="entry">
+            <time>12:00</time>
+          </div>
+          <div class="entry">
+            <time>13:00</time>
+          </div>
+          <div class="entry">
+            <time>14:00</time>
+          </div>
+          <div class="entry">
+            <time>15:00</time>
+          </div>
+          <div class="entry">
+            <time>16:00</time>
+          </div>
+          <div class="entry">
+            <time>17:00</time>
+          </div>
+          <div class="entry">
+            <time>18:00</time>
+          </div>
+          <div class="entry">
+            <time>19:00</time>
+          </div>
+        </div>
+
+        <div class="track yellow today">
+          <div class="entry" id="1">
+            <!-- <div class="details">
+              <h3>Lorem ipsum dolor sit.</h3>
+              <p>Lorem ipsum dolor sit amet.</p>
+            </div> -->
+          </div>
+          <!-- <div class="entry double">
+                <div class="details">
+                  <h3>Lorem ipsum dolor sit.</h3>
+                  <p>Lorem ipsum dolor sit amet.</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere!</p>
+                </div>
+              </div> -->
+          <div class="entry" id="2">
+          </div>
+          <div class="entry" id="3">
+          </div>
+          <div class="entry" id="4">
+          </div>
+          <div class="entry" id="5">
+          </div>
+          <div class="entry" id="6">
+          </div>
+          <div class="entry" id="7">
+          </div>
+          <div class="entry" id="8">
+          </div>
+          <div class="entry" id="9">
+          </div>
+          <div class="entry" id="10">
+          </div>
+          <div class="entry" id="11">
+          </div>
+          <div class="entry" id="12">
+          </div>
+        </div>
+
+        <div class="track turq">
+          <div class="entry" id="13">
+          </div>
+          <div class="entry" id="14">
+          </div>
+          <div class="entry" id="15">
+          </div>
+          <div class="entry" id="16">
+          </div>
+          <div class="entry" id="17">
+          </div>
+          <div class="entry" id="18">
+          </div>
+          <div class="entry" id="19">
+          </div>
+          <div class="entry" id="20">
+          </div>
+          <div class="entry" id="21">
+          </div>
+          <div class="entry" id="22">
+          </div>
+          <div class="entry" id="23">
+          </div>
+          <div class="entry" id="24">
+          </div>
+        </div>
+
+        <div class="track blue">
+
+          <div class="entry" id="25">
+          </div>
+          <div class="entry" id="26">
+          </div>
+          <div class="entry" id="27">
+          </div>
+          <div class="entry" id="28">
+          </div>
+          <div class="entry" id="29">
+          </div>
+          <div class="entry" id="30">
+          </div>
+          <div class="entry" id="31">
+          </div>
+          <div class="entry" id="32">
+          </div>
+          <div class="entry" id="33">
+          </div>
+          <div class="entry" id="34">
+          </div>
+          <div class="entry" id="35">
+          </div>
+          <div class="entry" id="36">
+          </div>
+        </div>
+
+        <div class="track green">
+          <!-- <div class="entry treble">
+                <div class="details">
+                  <h3>Lorem ipsum dolor sit.</h3>
+                  <p>Lorem ipsum dolor sit amet.</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, omnis voluptas?</p>
+                </div>
+              </div> -->
+          <div class="entry" id="37">
+          </div>
+          <div class="entry" id="38">
+          </div>
+          <div class="entry" id="39">
+          </div>
+          <div class="entry" id="40">
+          </div>
+          <div class="entry" id="41">
+          </div>
+          <div class="entry" id="42">
+          </div>
+          <div class="entry" id="43">
+          </div>
+          <div class="entry" id="44">
+          </div>
+          <div class="entry" id="45">
+          </div>
+          <div class="entry" id="46">
+          </div>
+          <div class="entry" id="47">
+          </div>
+          <div class="entry" id="48">
+          </div>
+        </div>
+
+        <div class="track purple">
+          <div class="entry" id="49">
+          </div>
+          <div class="entry" id="50">
+          </div>
+          <div class="entry" id="51">
+          </div>
+          <div class="entry" id="52">
+          </div>
+          <div class="entry" id="53">
+          </div>
+          <div class="entry" id="54">
+          </div>
+          <div class="entry" id="55">
+          </div>
+          <div class="entry" id="56">
+          </div>
+          <div class="entry" id="57">
+          </div>
+          <div class="entry" id="58">
+          </div>
+          <div class="entry" id="59">
+          </div>
+          <div class="entry" id="60">
+          </div>
+        </div>
+
+        <div class="track gray">
+
+          <div class="entry" id="61">
+          </div>
+          <div class="entry" id="62">
+          </div>
+          <div class="entry" id="63">
+          </div>
+          <div class="entry" id="64">
+          </div>
+          <div class="entry" id="65">
+          </div>
+          <div class="entry" id="66">
+          </div>
+          <div class="entry" id="67">
+          </div>
+          <div class="entry" id="68">
+          </div>
+          <div class="entry" id="69">
+          </div>
+          <div class="entry" id="70">
+          </div>
+          <div class="entry" id="71">
+          </div>
+          <div class="entry" id="72">
+          </div>
+        </div>
+
+        <div class="track pink">
+          <div class="entry" id="73">
+          </div>
+          <div class="entry" id="74">
+          </div>
+          <div class="entry" id="75">
+          </div>
+          <div class="entry" id="76">
+          </div>
+          <div class="entry" id="77">
+          </div>
+          <div class="entry" id="78">
+          </div>
+          <div class="entry" id="79">
+          </div>
+          <div class="entry" id="80">
+          </div>
+          <div class="entry" id="81">
+          </div>
+          <div class="entry" id="82">
+          </div>
+          <div class="entry" id="83">
+          </div>
+          <div class="entry" id="84">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="top-of-site-pixel-anchor"></div>
+</body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDHVlqubtnY0wqei1EGR2r_XE5doIJegzM",
+    authDomain: "uva-timetable.firebaseapp.com",
+    databaseURL: "https://uva-timetable.firebaseio.com",
+    projectId: "uva-timetable",
+    storageBucket: "uva-timetable.appspot.com",
+    messagingSenderId: "585431573128",
+    appId: "1:585431573128:web:b8f7cfcc6ede281d31f53d",
+    measurementId: "G-C6VGK8R08D"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const auth = firebase.auth();
+  
+</script>
+
+<script src="js/db.js"></script>
+<script src="js/app.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+
+<script src="js/jquery/jquery.ui.touch-punch.min.js"></script>
+
+
+<script src="js/logout.js"></script>
+<!-- <script src="js/auth.js"></script> -->
+
+<script src="js/bootstrap-js/bootstrap.min.js"></script>
+
+<script src="js/calendar/main.js"></script>
+<script src="js/calendar/scrollSide.js"></script>
+<script src="js/calendar/interaction.js"></script>
