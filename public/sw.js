@@ -1,4 +1,4 @@
-let V = "3";
+let V = "4";
 const staticCacheName = `site-static-v${V}`;
 const dynamicCacheName = `site-dynamic-v${V}`;
 const assets = [

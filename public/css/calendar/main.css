@@ -529,3 +529,8 @@ textarea {
   font-weight: 700;
   font-size: 10pt;
 }
+
+.date {
+  margin-left: 5px;
+  font-weight: 500;
+}
