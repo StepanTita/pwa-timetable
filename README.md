@@ -4,6 +4,8 @@ Amid the sporadic rhythm of the COVID-19 pandemic in Spain, maintaining consiste
 
 ## Demo:
 
+https://github.com/StepanTita/pwa-timetable/assets/44279105/07b6f875-63e1-4db2-a588-e2f4eab52590
+
 ## 🌟 Features:
 
 - **Interactive Calendar:** Easily track your classes, assignments, and exams.
